@@ -6,11 +6,11 @@ La aplicación consta de dos proyectos independientes que se comunican a través
 
 ##  Características del Proyecto
 
-* **Backend (Java / Spring Boot)**: Implementa la lógica de negocio pura utilizando el Patrón State. El flujo del ticket (Abierto → Asignado → En Diagnóstico → Resuelto → Cerrado / Reabierto) se controla completamente mediante polimorfismo, sin utilizar ni un solo condicional (`if` o `switch`) en la clase `Ticket` o en los controladores REST.
+* **Backend (Java / Spring Boot)**: Implementa la lógica de negocio pura utilizando el Patrón State. El flujo del ticket (Open → Assigned → In Diagnosis → Resolved → Closed / Reopened / Cancelled) se controla completamente mediante polimorfismo, sin utilizar ni un solo condicional (`if` o `switch`) en la clase `Ticket` o en los controladores REST.
 * **Frontend (React / Vite)**: Una interfaz de usuario moderna que simula la vista de un técnico de soporte. Permite interactuar con el ciclo de vida del ticket y visualizar en tiempo real:
   * El consumo del SLA (Acuerdo de Nivel de Servicio).
   * El diagrama de flujo del estado actual.
-  * Una vista paralela del código Java real para entender cómo interactúan los componentes del patrón por debajo.
+  * Una vista paralela del código Java real (en inglés) para entender cómo interactúan los componentes del patrón por debajo.
 
 ##  Estructura del Proyecto
 
@@ -82,8 +82,8 @@ El sistema se compone de dos servidores que deben ejecutarse en simultáneo.
 
 El corazón de este proyecto reside en la carpeta `backend/src/main/java/com/helpdesk/ticket/state`.
 
-1. **Contexto (`Ticket.java`)**: Mantiene una referencia al estado actual (`TicketState`). Cuando el usuario intenta interactuar con el ticket (ej. `ticket.resolver()`), el ticket simplemente delega la acción a su estado: `estado.resolver(this, solucion)`.
+1. **Contexto (`Ticket.java`)**: Mantiene una referencia al estado actual (`TicketState`). Cuando el usuario intenta interactuar con el ticket (ej. `ticket.resolve()`), el ticket simplemente delega la acción a su estado: `state.resolve(this, solution)`.
 2. **Interfaz de Estado (`TicketState.java`)**: Define todas las acciones posibles que puede sufrir un ticket a lo largo de su vida.
-3. **Estados Concretos (`AbiertoState`, `EnDiagnosticoState`, etc.)**: Implementan la interfaz. Cada estado solo permite las acciones que tienen sentido en ese momento. Si intentas *resolver* un ticket que apenas está *abierto* (sin diagnóstico), el estado `AbiertoState` lanzará una excepción. Además, contienen lógicas ricas de negocio, como `ResueltoState`, que escala automáticamente el ticket si detecta que ha sido reabierto más de dos veces.
+3. **Estados Concretos (`OpenState`, `InDiagnosisState`, `CancelledState`, etc.)**: Implementan la interfaz. Cada estado solo permite las acciones que tienen sentido en ese momento. Si intentas *resolver* un ticket que apenas está *abierto* (sin diagnóstico), el estado `OpenState` lanzará una excepción. Además, contienen lógicas ricas de negocio, como `ResolvedState`, que escala automáticamente el ticket si detecta que ha sido reabierto más de dos veces.
 
 ¡Disfruta explorando la demostración!
