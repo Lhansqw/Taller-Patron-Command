@@ -1,0 +1,15 @@
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\controller\TicketController.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\service\TicketService.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\OpenState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\model\Ticket.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\AssignedState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\InDiagnosisState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\CorsConfig.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\dto\TicketDTO.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\ClosedState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\ResolvedState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\EscalatedState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\TicketState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\HelpdeskApplication.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\CancelledState.java
+C:\Users\labinf6.pasto\Documents\Taller-Patron-Command\backend\src\main\java\com\helpdesk\ticket\state\ReopenedState.java

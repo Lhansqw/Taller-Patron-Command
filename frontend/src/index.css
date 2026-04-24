@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code&display=swap');
+
+:root {
+  --bg-dark: #0f172a;
+  --bg-panel: #1e293b;
+  --bg-card: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --border: #475569;
+  
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-header {
+  padding: 1.5rem 2rem;
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
+}
+
+.app-header p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Panels */
+.panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.left-panel {
+  border-right: 1px solid var(--border);
+  background-color: #0b1120;
+}
+
+.right-panel {
+  background-color: #0f172a;
+}
+
+.panel-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-panel);
+}
+
+.panel-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.panel-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+.tab-btn.active {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+/* Code Viewer */
+.code-panel {
+  padding: 1.5rem;
+  background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, transparent 70%);
+}
+
+.code-viewer {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+.code-header {
+  background-color: #1e1e1e;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #333;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: #858585;
+}
+
+.context-explanation {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background-color: rgba(59, 130, 246, 0.05);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.context-explanation h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #60a5fa;
+}
+
+.context-explanation p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Ticket Card */
+.ticket-card {
+  background-color: var(--bg-panel);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ticket-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.ticket-card.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  border: 1px dashed var(--border);
+  background-color: transparent;
+}
+
+.ticket-card.empty h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.ticket-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-id {
+  font-size: 0.8rem;
+  font-family: 'Fira Code', monospace;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.ticket-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.ticket-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* SLA Bar */
+.sla-container {
+  margin-bottom: 1.5rem;
+  background-color: rgba(0,0,0,0.2);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.sla-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.sla-title {
+  color: var(--text-muted);
+}
+
+.sla-track {
+  height: 8px;
+  background-color: var(--bg-card);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sla-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s linear, background-color 0.3s ease;
+}
+
+/* Details */
+.ticket-details {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.detail-row.solution {
+  flex-direction: column;
+  background-color: rgba(16, 185, 129, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  margin-top: 0.5rem;
+}
+
+.detail-row.solution .detail-label {
+  color: var(--success);
+  margin-bottom: 0.5rem;
+}
+
+.detail-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Actions */
+.ticket-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.action-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-group.full-width {
+  flex-direction: column;
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.btn-row .btn {
+  flex: 1;
+}
+
+input {
+  flex: 1;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn.success {
+  background-color: var(--success);
+  color: white;
+}
+
+.btn.success:hover:not(:disabled) {
+  background-color: #059669;
+}
+
+.btn.warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.btn.warning:hover:not(:disabled) {
+  background-color: #d97706;
+}
+
+.btn.danger {
+  background-color: var(--danger);
+  color: white;
+}
+
+.btn.danger:hover:not(:disabled) {
+  background-color: #dc2626;
+}
+
+.btn.danger.outline {
+  background-color: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+.btn.danger.outline:hover:not(:disabled) {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.btn.secondary {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.btn.secondary:hover:not(:disabled) {
+  background-color: #475569;
+}
+
+.error-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  color: #fca5a5;
+  font-size: 0.85rem;
+}
+
+/* State Flow */
+.state-flow-container {
+  background-color: var(--bg-panel);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.flow-title {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.flow-nodes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.flow-node {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid;
+  transition: all 0.3s ease;
+  z-index: 2;
+  background-color: var(--bg-panel);
+}
+
+.flow-node.active {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px currentColor;
+}
+
+.flow-arrow {
+  color: var(--border);
+  margin: 0 0.5rem;
+}
+
+.flow-alternative {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.alt-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
