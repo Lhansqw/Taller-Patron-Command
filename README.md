@@ -4,7 +4,7 @@ Este proyecto es una demostración completa y práctica del **Patrón de Diseño
 
 La aplicación consta de dos proyectos independientes que se comunican a través de una API REST.
 
-## 🚀 Características del Proyecto
+##  Características del Proyecto
 
 * **Backend (Java / Spring Boot)**: Implementa la lógica de negocio pura utilizando el Patrón State. El flujo del ticket (Abierto → Asignado → En Diagnóstico → Resuelto → Cerrado / Reabierto) se controla completamente mediante polimorfismo, sin utilizar ni un solo condicional (`if` o `switch`) en la clase `Ticket` o en los controladores REST.
 * **Frontend (React / Vite)**: Una interfaz de usuario moderna que simula la vista de un técnico de soporte. Permite interactuar con el ciclo de vida del ticket y visualizar en tiempo real:
@@ -12,7 +12,7 @@ La aplicación consta de dos proyectos independientes que se comunican a través
   * El diagrama de flujo del estado actual.
   * Una vista paralela del código Java real para entender cómo interactúan los componentes del patrón por debajo.
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```text
 Taller-Patron-Command/
@@ -35,13 +35,13 @@ Taller-Patron-Command/
     └── package.json          # Configuración de Node.js
 ```
 
-## 🛠️ Prerrequisitos
+##  Prerrequisitos
 
 Para ejecutar este proyecto en tu máquina local necesitarás:
 * **Java Development Kit (JDK)** versión 11 o superior.
 * **Node.js** (versión 16+ recomendada).
 
-## 🏃‍♂️ Cómo Ejecutar el Proyecto
+##  Cómo Ejecutar el Proyecto
 
 El sistema se compone de dos servidores que deben ejecutarse en simultáneo.
 
@@ -78,7 +78,7 @@ El sistema se compone de dos servidores que deben ejecutarse en simultáneo.
    ```
 4. Abre tu navegador y dirígete a `http://localhost:5173`.
 
-## 🧠 Entendiendo el Patrón State en este Proyecto
+##  Entendiendo el Patrón State en este Proyecto
 
 El corazón de este proyecto reside en la carpeta `backend/src/main/java/com/helpdesk/ticket/state`.
 
